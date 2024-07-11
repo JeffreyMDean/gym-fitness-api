@@ -16,5 +16,14 @@ exercise.save
 exercise = Exercise.new(name: "push-ups", description: "This is a bodyweight exercise that involves pushing yourself off the floor while keeping a neutral spine. This exercise strengthens the pecs, anterior delts, triceps, and core.", image_url: "https://www.fitnesseducation.edu.au/wp-content/uploads/2017/03/Pushups.jpg", video_url: "https://www.youtube.com/watch?v=i9sTjhN4Z3M")
 exercise.save
 
+routine = Routine.new(user_id: 2, exercise_id: 1, reps: 20)
+routine.save
+
+routine = Routine.new(user_id: 1, exercise_id: 3, reps: 15)
+routine.save
+
+routine = Routine.new(user_id: 3, exercise_id: 2, reps: 4)
+routine.save
+
 
 
