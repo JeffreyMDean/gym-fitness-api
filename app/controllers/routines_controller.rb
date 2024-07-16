@@ -3,7 +3,7 @@ class RoutinesController < ApplicationController
     p "hello"
     p current_user
     @routines = Routine.all
-    render :index
+    render json: @routines
   end
 
   def create
