@@ -43,6 +43,13 @@ comment2.save!
 comment3 = Comment.new(user_id: user3.id, exercise_id: exercise1.id, body: "I love doing pullups with varying grips and bar sizes to keep things novel!")
 comment3.save!
 
+achievement1 = Achievement.new(user_id: 1, badge: "Personal Record", description: "Congratulations! You have set a new personal record for total weight lifted, reps completed, or decreased rest time.")
+achievement1.save!
 
+achievement2 = Achievement.new(user_id: 2, badge: "Consistency", description: "Congratulations! You have completed all your workouts for the week.")
+achievement2.save!
+
+achievement3 = Achievement.new(user_id: 3, badge: "Explorer", description: "Cogratulations! You have ventured from your normal routine and introduced a novel stimulus.")
+achievement3.save!
 
 
