@@ -1,6 +1,5 @@
 class ExercisesController < ApplicationController
   def index
-    p current_user
     @exercises = Exercise.all
     render :index
   end

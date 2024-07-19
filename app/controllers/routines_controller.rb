@@ -1,7 +1,5 @@
 class RoutinesController < ApplicationController
   def index
-    p "hello"
-    p current_user
     @routines = Routine.all
     render json: @routines
   end

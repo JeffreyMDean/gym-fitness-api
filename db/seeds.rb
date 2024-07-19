@@ -1,12 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 exercise1 = Exercise.new(name: "pull-ups", description: "This exercise involves hanging from a bar and pulling one's body weight until their chin is above the bar. Arguably one of the best upper body exercises that targets the lats, biceps, trapezius, and rhomboids while also engaging the core and forearms.", image_url: "https://weighttraining.guide/wp-content/uploads/2016/10/pull-up-2-resized.png", video_url: "https://www.youtube.com/watch?v=8CCUnkJZ-lY")
 exercise1.save!
 
@@ -32,24 +23,3 @@ routine2.save!
 
 routine3 = Routine.new(user_id: user3.id, exercise_id: exercise2.id, reps: 4)
 routine3.save!
-
-
-comment1 = Comment.new(user_id: user1.id, exercise_id: exercise3.id, body: "This is an excellent body weight exercise. I've found it to be an essential part of my repertoire for at home workouts too!")
-comment1.save!
-
-comment2 = Comment.new(user_id: user2.id, exercise_id: exercise2.id, body: "This is one of my favorite exercises for building functional strength!")
-comment2.save!
-
-comment3 = Comment.new(user_id: user3.id, exercise_id: exercise1.id, body: "I love doing pullups with varying grips and bar sizes to keep things novel!")
-comment3.save!
-
-achievement1 = Achievement.new(user_id: 1, badge: "Personal Record", description: "Congratulations! You have set a new personal record for total weight lifted, reps completed, or decreased rest time.")
-achievement1.save!
-
-achievement2 = Achievement.new(user_id: 2, badge: "Consistency", description: "Congratulations! You have completed all your workouts for the week.")
-achievement2.save!
-
-achievement3 = Achievement.new(user_id: 3, badge: "Explorer", description: "Cogratulations! You have ventured from your normal routine and introduced a novel stimulus.")
-achievement3.save!
-
-
