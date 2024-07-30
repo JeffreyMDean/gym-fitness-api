@@ -23,3 +23,12 @@ routine2.save!
 
 routine3 = Routine.new(user_id: user3.id, exercise_id: exercise2.id, reps: 4)
 routine3.save!
+
+comment1 = Comment.new(user_id: user1.id, exercise_id: exercise3.id, body: "This is an excellent exercise. I have found it to be an essential part of my repertoire for home workouts too!")
+comment1.save!
+
+comment2 = Comment.new(user_id: user2.id, exercise_id: exercise2.id, body: "This is one of my favorite exercies for building functional strength!")
+comment2.save!
+
+comment3 = Comment.new(user_id: user3.id, exercise_id: exercise1.id, body: "I love doing pullups with varying grips and bar sizes to keep things novel!")
+comment3.save!
