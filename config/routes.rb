@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   get "/routines" => "routines#index"
   post "/routines" => "routines#create"
+
+  post "/comments" => "comments#create"
 end
