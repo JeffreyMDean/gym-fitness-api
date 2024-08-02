@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :find_comment, only: [:update] # add :destroy
+  before_action :set_comment, only: [:update] # add :destroy
 
   def create
     @comment = Comment.new(comment_params)
@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
   end
 
   def update
-    logger.debug("Incoming params: #{params.inspect}")
     if @comment.update(comment_params)
       render json: @comment
     else 
@@ -21,7 +20,7 @@ class CommentsController < ApplicationController
 
   private 
 
-  def find_comment
+  def set_comment
     @comment = Comment.find(params[:id])
   end
 
