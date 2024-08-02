@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   post "/routines" => "routines#create"
 
   post "/comments" => "comments#create"
+  patch "/comments/:id" => "comments#update"
 end

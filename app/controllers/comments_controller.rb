@@ -1,11 +1,20 @@
 class CommentsController < ApplicationController
-  # before_action :find_comment, only [:update, :destroy]
+  before_action :find_comment, only: [:update] # add :destroy
 
   def create
     @comment = Comment.new(comment_params)
-    if @comment.save
+    if @comment.save # saves the newly created comment obj to the db
       render json: @comment, status: :created
     else
+      render json: @comment.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    logger.debug("Incoming params: #{params.inspect}")
+    if @comment.update(comment_params)
+      render json: @comment
+    else 
       render json: @comment.errors, status: :unprocessable_entity
     end
   end
