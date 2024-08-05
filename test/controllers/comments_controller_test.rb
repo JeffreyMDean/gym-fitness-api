@@ -18,6 +18,13 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_equal Exercise.first.id, data["exercise_id"]
     assert_equal "Updated Body", data["body"]
   end
+
+  test "destroy" do
+    assert_difference "Comment.count", -1 do
+      delete "/comments/#{Comment.first.id}.json"
+      assert_response 200
+    end
+  end
 end
 
 # After the update request is processed, the response is parsed from JSON into a Ruby hash ('data')...in the context of the test
