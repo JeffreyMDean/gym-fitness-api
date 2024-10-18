@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   post "/users" => "users#create"
+  put "/users/:id" => "users#update"
+  get "/users/:id" => "users#index"
   
   post "/sessions" => "sessions#create"
 
@@ -15,3 +17,8 @@ Rails.application.routes.draw do
   patch "/comments/:id" => "comments#update"
   delete "/comments/:id" => "comments#destroy"
 end
+
+# post - create
+# put/patch - update
+# delete - destroy
+# get - show

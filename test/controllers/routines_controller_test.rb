@@ -1,6 +1,12 @@
 require "test_helper"
 
 class RoutinesControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = users(:one)
+    @exercise = exercises(:one)
+    sign_in @user
+  end
+
   test "index" do
     get "/routines.json"
     assert_response 200
@@ -11,8 +17,8 @@ class RoutinesControllerTest < ActionDispatch::IntegrationTest
 
   test "create" do
     assert_difference "Routine.count", 1 do
-      post "/routines.json", params: { user_id: User.first.id, exercise_id: Exercise.first.id, reps: 20 }
+      post "/routines.json", params: { exercise_id: @exercise.id, reps: 20 }
       assert_response 200
-    end
+    end 
   end
 end 
