@@ -2,9 +2,14 @@ class UsersController < ApplicationController
   def index
     @users = User.all 
     render json: @users, status: :ok
+  end            #the array of user objects retrieved earlier
+
+  def show
+    @user = User.find_by(id: params[:id])
+    render json: @user, status: :ok
   end
 
-  def create
+  def create 
     user = User.new(
       name: params[:name],
       email: params[:email],

@@ -2,20 +2,24 @@ require 'http'
 
 class ExercisesController < ApplicationController
   BASE_URL = "https://wger.de/api/v2" 
+  # https://wger.de/api/v2/exercise/
   def index
-    @exercises = Exercise.all
-    render :index
-    # response = HTTP.get("https://pokeapi.co/api/v2")
-    # puts 'TEST #{response}'
-    # if response.status.success?
-    #   JSON.parse(response.body.to_s)
-    # else
-    #   render json: { error: 'Failed request' }
-    # end
-  end
+    # @exercises = Exercise.all
+    # render :index
+    # binding.pry 
+    response = HTTP.follow(max_hops: 2).get("https://wger.de/api/v2/exercise") # response from API stored in the response variable
+    if response.status.success?           
+      @exercises = JSON.parse(response.body)['results'].map do |exercise| {name: exercise['name']}
+      # binding.pry 
+      end
+      render json: @exercises
+    else
+      render json: {error: "Failed to fetch"}
+    end
+  end 
     
-  def show
+  def show 
     @exercise = Exercise.find_by(id: params[:id])
-    render :show
+    render :show 
   end
-end
+end  

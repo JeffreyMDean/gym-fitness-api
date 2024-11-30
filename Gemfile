@@ -71,3 +71,9 @@ gem 'jwt'
 gem "rack-cors"
 
 gem "http"
+
+gem 'pry'
+
+gem 'pry-rails'  
+
+gem 'pry-byebug'

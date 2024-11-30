@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   post "/users" => "users#create"
   put "/users/:id" => "users#update"
-  get "/users/:id" => "users#index"
-  
+  get "/users" => "users#index"
+  get "/users/:id" => "users#show"
+
   post "/sessions" => "sessions#create"
 
   get "/exercises" => "exercises#index"
