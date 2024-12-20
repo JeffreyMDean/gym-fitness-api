@@ -107,15 +107,23 @@ class ExercisesController < ApplicationController
     }
   }
   def index
-    # @exercises = Exercise.all
-    # render :index
-    # binding.pry 
     response = HTTP.follow(max_hops: 2).get("#{BASE_URL}/exercise") # response from API stored in the response variable
     if response.status.success?           
-      @exercises = JSON.parse(response.body)['results'].map do |exercise| {name: exercise['name']}
-      # binding.pry 
+      exercises = JSON.parse(response.body)['results']
+      
+      exercise_info = exercises.map do |exercise|
+        name = exercise['name'] # accesses name key within ex hash
+        details = EXERCISE_DETAILS[name] || {} # linked to name var above
+
+        {
+          id: exercise['id'],
+          name: name,
+          description: details[:description] || "No description available",
+          image_url: details[:image_url] || "No Image available",
+          video_url: details[:video_url] || "No video available"
+        }
       end
-      render json: @exercises
+      render json: exercise_info 
     else
       render json: { error: "Failed to fetch exercises" }
     end
@@ -130,5 +138,5 @@ class ExercisesController < ApplicationController
     else  
       render json: { error: "Failed to fetch exercise details" }
     end
-  end
-end  
+  end 
+end 
